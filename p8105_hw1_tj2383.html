@@ -160,12 +160,24 @@ as.numeric(character_vec),
 as.numeric(factor_vec),
 
 ## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.
+
+new_factorvec = as.factor(character_vec),
+as.numeric(new_factorvec),
+## Since each character variable is unique it created 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
+
+new_charvec = as.character(factor_vec),
+as.numeric(new_charvec)
+
+# Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric values cannot be assigned to character variables.
+
 )</code></pre>
 <pre><code>## Warning in mean.default(character_vec): argument is not numeric or logical:
 ## returning NA</code></pre>
 <pre><code>## Warning in mean.default(factor_vec): argument is not numeric or logical:
 ## returning NA</code></pre>
-<pre><code>## Warning in eval_tidy(xs[[i]], unique_output): NAs introduced by coercion</code></pre>
+<pre><code>## Warning in eval_tidy(xs[[i]], unique_output): NAs introduced by coercion
+
+## Warning in eval_tidy(xs[[i]], unique_output): NAs introduced by coercion</code></pre>
 <p>Question 2:</p>
 
 
