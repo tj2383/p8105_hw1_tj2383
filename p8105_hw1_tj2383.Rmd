@@ -56,7 +56,11 @@ Question 2:
 q2_df = tibble(
   x = rnorm(1000),
   y = rnorm(1000),
-  sum_vec = x + y > 0
+  sum_vec = x + y > 0,
+  num_sumvec = as.numeric(sum_vec),
+  fac_sumvec = as.factor(num_sumvec)
+
+## The size of the dataset is `r length(fac_sumvec)`. The mean of x is `r mean(x)` and the median of x is `r median(x)`.
 )
 ```
 
