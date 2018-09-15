@@ -143,8 +143,9 @@ $(document).ready(function () {
 <pre class="r"><code>set.seed(168)</code></pre>
 <p>Question 1:</p>
 <pre class="r"><code>q1_df = tibble(
-  random_samp = runif(10, min = 0, max = 5)
+  random_samp = runif(10, 0:5)
 )</code></pre>
+<pre><code>## Warning in runif(10, 0:5): NAs produced</code></pre>
 
 
 

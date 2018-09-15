@@ -12,7 +12,7 @@ library(tidyverse)
 ```
 
 Set a seed so that results are reproducible:
-```{r}
+```{r set_seed}
 set.seed(168)
 ```
 
@@ -20,7 +20,8 @@ set.seed(168)
 Question 1:
 ```{r question_1_code}
 q1_df = tibble(
-  random_samp = runif(10, min = 0, max = 5)
+  random_samp = runif(10, min = 0, max = 5),
+  logical_vec = random_samp > 2
 )
 ```
 
