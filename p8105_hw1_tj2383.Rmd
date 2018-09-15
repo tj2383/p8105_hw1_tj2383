@@ -37,6 +37,13 @@ as.numeric(character_vec),
 as.numeric(factor_vec),
 
 ## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.
+
+new_factorvec = as.factor(character_vec),
+## Since each character variable is unique it created 10 levels when converting to the factor (categorical) variables.
+
+as.numeric(new_factorvec)
+## Assigned random numbers to the 10 level factor (categorical) variable.
+
 )
 ```
 
