@@ -179,6 +179,11 @@ as.numeric(new_charvec)
 
 ## Warning in eval_tidy(xs[[i]], unique_output): NAs introduced by coercion</code></pre>
 <p>Question 2:</p>
+<pre class="r"><code>q2_df = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+  sum_vec = x + y &gt; 0
+)</code></pre>
 
 
 
