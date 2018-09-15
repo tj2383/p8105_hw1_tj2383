@@ -143,9 +143,11 @@ $(document).ready(function () {
 <pre class="r"><code>set.seed(168)</code></pre>
 <p>Question 1:</p>
 <pre class="r"><code>q1_df = tibble(
-  random_samp = runif(10, 0:5)
+  random_samp = runif(10, min = 0, max = 5),
+  logical_vec = random_samp &gt; 2,
+  character_vec = c(&quot;dog&quot;, &quot;cat&quot;, &quot;rabbit&quot;, &quot;frog&quot;, &quot;mouse&quot;, &quot;rat&quot;, &quot;fly&quot;, &quot;hippo&quot;, &quot;horse&quot;, &quot;bird&quot;),
+  factor_vec = factor(c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;medium&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;low&quot;, &quot;low&quot;, &quot;high&quot;))
 )</code></pre>
-<pre><code>## Warning in runif(10, 0:5): NAs produced</code></pre>
 
 
 

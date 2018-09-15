@@ -21,7 +21,9 @@ Question 1:
 ```{r question_1_code}
 q1_df = tibble(
   random_samp = runif(10, min = 0, max = 5),
-  logical_vec = random_samp > 2
+  logical_vec = random_samp > 2,
+  character_vec = c("dog", "cat", "rabbit", "frog", "mouse", "rat", "fly", "hippo", "horse", "bird"),
+  factor_vec = factor(c("low", "medium", "high", "medium", "low", "medium", "high", "low", "low", "high"))
 )
 ```
 
