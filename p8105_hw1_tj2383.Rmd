@@ -11,14 +11,9 @@ Load necessary packages:
 library(tidyverse)
 ```
 
-Set a seed so that results are reproducible:
-```{r set_seed}
-set.seed(168)
-```
-
-
 Question 1:
 ```{r question_1_code}
+set.seed(168)
 q1_df = tibble(
   random_samp = runif(10, min = 0, max = 5),
   logical_vec = random_samp > 2,
@@ -53,6 +48,7 @@ as.numeric(new_charvec)
 
 Question 2:
 ```{r question_2_code}
+set.seed(168)
 q2_df = tibble(
   x = rnorm(1000),
   y = rnorm(1000),
@@ -60,8 +56,15 @@ q2_df = tibble(
   num_sumvec = as.numeric(sum_vec),
   fac_sumvec = as.factor(num_sumvec)
 
-## The size of the dataset is `r length(fac_sumvec)`. The mean of x is `r mean(x)` and the median of x is `r median(x)`.
+## The size of the dataset is `r length(fac_sumvec)`. The mean of x is `r mean(x)` and the median of x is `r median(x)`. The proportion of cases for which the logic vector is "TRUE" is `r mean(sum_vec)`
 )
+
+ggplot(q2_df, aes(x = x, y = y, color = sum_vec)) + geom_point()
+ggplot(q2_df, aes(x = x, y = y, color = num_sumvec)) + geom_point()
+ggplot(q2_df, aes(x = x, y = y, color = fac_sumvec)) + geom_point()
+
+## The color scale of the logical vector and the factor vector are the same, red for FALSE or 0 and blue for TRUE or 1. The color scale of the numeric vector is a gradient that represents the different numeric values with different shades of blue.
+
 ```
 
 
