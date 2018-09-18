@@ -46,7 +46,7 @@ I attempted to convert the logical, character, and factor vectors to numeric vec
 ```{r eval = FALSE} 
 as.numeric(logical_vec),
 as.numeric(character_vec),
-as.numeric(factor_vec),
+as.numeric(factor_vec)
 
 ## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.
 ```
@@ -68,6 +68,13 @@ as.numeric(new_charvec)
 
 
 Question 2:
+I created a data frame (q2_df) comprised of:
+x: a random sample of size 1000 from a standard Normal distribution
+y: a random sample of size 1000 from a standard Normal distribution
+A logical vector (sum_vec) indicating whether the x + y > 0
+A numeric vector (num_sumvec) created by coercing the above logical vector
+A factor vector (fac_sumvec) created by coercing the above logical vector
+
 ```{r question_2_code}
 set.seed(168)
 q2_df = tibble(
@@ -81,6 +88,8 @@ q2_df = tibble(
 
 The size of the dataset is `r length(fac_sumvec)`. The mean of x is `r mean(x)` and the median of x is `r median(x)`. The proportion of cases for which the logic vector is "TRUE" is `r mean(sum_vec)`
 
+
+I made a scatterplot of y vs. x using the logical, numeric, and factor variables from the previous part. Then I exported the plot of the logical variable to my project directory.
 
 ```{r plots_code}
 logic_plot = ggplot(q2_df, aes(x = x, y = y, color = sum_vec)) + geom_point()
