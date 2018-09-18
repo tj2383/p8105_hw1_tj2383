@@ -2,7 +2,7 @@
 title: "P8105_hw1_tj2383"
 author: Tanvi Jain
 date: 2018-09-15
-output: html_document
+output: github_document
 ---
 
 Loaded necessary packages:
