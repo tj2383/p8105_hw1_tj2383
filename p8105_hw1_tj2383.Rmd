@@ -29,17 +29,21 @@ q1_df = tibble(
 )
 ```
 
-I computed means for the random sample, the logical vector, the character vector, and the factor vector. I then attempted to convert the logical, character, and factor vectors to numeric vectors.
+I computed means for the random sample, the logical vector, the character vector, and the factor vector.
 
-```{r mean_code eval = FALSE} 
+```{r mean_code} 
  
-mean(random_samp),
-mean(logical_vec),
-mean(character_vec),
-mean(factor_vec),
+mean(random_samp)
+mean(logical_vec)
+mean(character_vec)
+mean(factor_vec)
 
 ## The mean can not be computed for the logical, character, and factoral variables because the values are not numeric. The mean was calculated for the random sample of uniform distribution.
+```
 
+I attempted to convert the logical, character, and factor vectors to numeric vectors.
+
+```{r eval = FALSE} 
 as.numeric(logical_vec),
 as.numeric(character_vec),
 as.numeric(factor_vec),
@@ -47,17 +51,19 @@ as.numeric(factor_vec),
 ## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.
 ```
 
+
+I converted character_vec to a factor vector (new_factorvec). Then converted new_factorvec to a numeric vector. I converted factor_vec to a character vector (new_charvec). Then converted new_charvec to a numeric vector.
+
 ```{r conversion_code}
 new_factorvec = as.factor(character_vec)
 as.numeric(new_factorvec)
 ## Since each character variable is unique it created 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
 
-new_charvec = as.character(factor_vec),
+new_charvec = as.character(factor_vec)
 as.numeric(new_charvec)
 
 # Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric values cannot be assigned to character variables.
 
-)
 ```
 
 
