@@ -32,11 +32,11 @@ q1_df = tibble(
 I computed means for the random sample, the logical vector, the character vector, and the factor vector.
 
 ```{r mean_code} 
- 
-mean(random_samp)
-mean(logical_vec)
-mean(character_vec)
-mean(factor_vec)
+
+mean(q1_df$random_samp)
+mean(q1_df$logical_vec)
+mean(q1_df$character_vec)
+mean(q1_df$factor_vec)
 
 ## The mean can not be computed for the logical, character, and factoral variables because the values are not numeric. The mean was calculated for the random sample of uniform distribution.
 ```
@@ -44,9 +44,10 @@ mean(factor_vec)
 I attempted to convert the logical, character, and factor vectors to numeric vectors.
 
 ```{r eval = FALSE} 
-as.numeric(logical_vec),
-as.numeric(character_vec),
-as.numeric(factor_vec)
+
+as.numeric(q1_df$logical_vec),
+as.numeric(q1_df$character_vec),
+as.numeric(q1_df$factor_vec)
 
 ## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.
 ```
@@ -55,17 +56,17 @@ as.numeric(factor_vec)
 I converted character_vec to a factor vector (new_factorvec). Then converted new_factorvec to a numeric vector. I converted factor_vec to a character vector (new_charvec). Then converted new_charvec to a numeric vector.
 
 ```{r conversion_code}
-new_factorvec = as.factor(character_vec)
-as.numeric(new_factorvec)
+
+new_factorvec = as.factor(q1_df$character_vec)
+as.numeric(q1_df$new_factorvec)
 ## Since each character variable is unique it created 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
 
-new_charvec = as.character(factor_vec)
-as.numeric(new_charvec)
+new_charvec = as.character(q1_df$factor_vec)
+as.numeric(q1_df$new_charvec)
 
 # Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric values cannot be assigned to character variables.
 
 ```
-
 
 Question 2:
 I created a data frame (q2_df) comprised of:
