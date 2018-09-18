@@ -2,7 +2,7 @@
 title: "P8105_hw1_tj2383"
 author: Tanvi Jain
 date: 2018-09-15
-output: github_document
+output: html_document
 ---
 
 Loaded necessary packages:
@@ -18,7 +18,6 @@ I created a data frame (q1_df) comprised of:
 -A logical vector (logical_vec) indicating whether elements of the sample are greater than 2
 -A (length-10) character vector (character_vec)
 -A (length-10) factor vector (factor_vec)
-
 ```{r question_1_code}
 set.seed(168)
 q1_df = tibble(
@@ -29,8 +28,8 @@ q1_df = tibble(
 )
 ```
 
-I computed means for the random sample, the logical vector, the character vector, and the factor vector.
 
+I computed means for the random sample, the logical vector, the character vector, and the factor vector.
 ```{r mean_code} 
 
 mean(q1_df$random_samp)
@@ -38,11 +37,11 @@ mean(q1_df$logical_vec)
 mean(q1_df$character_vec)
 mean(q1_df$factor_vec)
 
-## The mean can not be computed for the logical, character, and factoral variables because the values are not numeric. The mean was calculated for the random sample of uniform distribution.
+## The mean can not be computed for the character, and factoral variables because the values are not numeric/integers. The mean was calculated for the random_samp of uniform distribution and the logical_vec.
 ```
 
-I attempted to convert the logical, character, and factor vectors to numeric vectors.
 
+I attempted to convert the logical, character, and factor vectors to numeric vectors.
 ```{r eval = FALSE} 
 
 as.numeric(q1_df$logical_vec),
@@ -54,19 +53,19 @@ as.numeric(q1_df$factor_vec)
 
 
 I converted character_vec to a factor vector (new_factorvec). Then converted new_factorvec to a numeric vector. I converted factor_vec to a character vector (new_charvec). Then converted new_charvec to a numeric vector.
-
 ```{r conversion_code}
 
 new_factorvec = as.factor(q1_df$character_vec)
-as.numeric(q1_df$new_factorvec)
-## Since each character variable is unique it created 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
+as.numeric(new_factorvec)
+## Since each character variable is unique it attempted to create 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
 
 new_charvec = as.character(q1_df$factor_vec)
-as.numeric(q1_df$new_charvec)
+as.numeric(new_charvec)
 
-# Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric values cannot be assigned to character variables.
+# Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric/integer values cannot be assigned to character variables.
 
 ```
+
 
 Question 2:
 I created a data frame (q2_df) comprised of:
@@ -75,23 +74,22 @@ y: a random sample of size 1000 from a standard Normal distribution
 A logical vector (sum_vec) indicating whether the x + y > 0
 A numeric vector (num_sumvec) created by coercing the above logical vector
 A factor vector (fac_sumvec) created by coercing the above logical vector
-
 ```{r question_2_code}
 set.seed(168)
 q2_df = tibble(
   x = rnorm(1000),
   y = rnorm(1000),
-  sum_vec = x + y > 0,
+  sum_vec = (x + y) > 0,
   num_sumvec = as.numeric(sum_vec),
   fac_sumvec = as.factor(num_sumvec)
 )
 ```
 
-The size of the dataset is `r length(fac_sumvec)`. The mean of x is `r mean(x)` and the median of x is `r median(x)`. The proportion of cases for which the logic vector is "TRUE" is `r mean(sum_vec)`
+The size of the dataset is `r length(q2_df$fac_sumvec)`. The mean of x is `r mean(q2_df$x)` and the median of x is `r median(q2_df$x)`. The proportion of cases for which the logic vector is "TRUE" is `r mean(q2_df$sum_vec)`
+
 
 
 I made a scatterplot of y vs. x using the logical, numeric, and factor variables from the previous part. Then I exported the plot of the logical variable to my project directory.
-
 ```{r plots_code}
 logic_plot = ggplot(q2_df, aes(x = x, y = y, color = sum_vec)) + geom_point()
 num_plot = ggplot(q2_df, aes(x = x, y = y, color = num_sumvec)) + geom_point()

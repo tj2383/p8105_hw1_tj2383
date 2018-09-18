@@ -129,67 +129,68 @@ $(document).ready(function () {
 </div>
 
 
-<p>Load necessary packages:</p>
+<p>Loaded necessary packages:</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<p>Question 1:</p>
+<p>Question 1: I created a data frame (q1_df) comprised of:</p>
+<p>-A random sample (random_samp) of size 10 from a uniform[0, 5] distribution -A logical vector (logical_vec) indicating whether elements of the sample are greater than 2 -A (length-10) character vector (character_vec) -A (length-10) factor vector (factor_vec)</p>
 <pre class="r"><code>set.seed(168)
 q1_df = tibble(
   random_samp = runif(10, min = 0, max = 5),
   logical_vec = random_samp &gt; 2,
   character_vec = c(&quot;dog&quot;, &quot;cat&quot;, &quot;rabbit&quot;, &quot;frog&quot;, &quot;mouse&quot;, &quot;rat&quot;, &quot;fly&quot;, &quot;hippo&quot;, &quot;horse&quot;, &quot;bird&quot;),
-  factor_vec = factor(c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;medium&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;low&quot;, &quot;low&quot;, &quot;high&quot;)),
-  
-mean(random_samp),
-mean(logical_vec),
-mean(character_vec),
-mean(factor_vec),
-
-## The mean can not be computed for the logical, character, and factor variables because the values are not numeric. The mean was calculated for the random sample of uniform distribution.
-
-as.numeric(logical_vec),
-as.numeric(character_vec),
-as.numeric(factor_vec),
-
-## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.
-
-new_factorvec = as.factor(character_vec),
-as.numeric(new_factorvec),
-## Since each character variable is unique it created 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
-
-new_charvec = as.character(factor_vec),
-as.numeric(new_charvec)
-
-# Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric values cannot be assigned to character variables.
-
+  factor_vec = factor(c(&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;medium&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, &quot;low&quot;, &quot;low&quot;, &quot;high&quot;))
 )</code></pre>
-<pre><code>## Warning in mean.default(character_vec): argument is not numeric or logical:
-## returning NA</code></pre>
-<pre><code>## Warning in mean.default(factor_vec): argument is not numeric or logical:
-## returning NA</code></pre>
-<pre><code>## Warning in eval_tidy(xs[[i]], unique_output): NAs introduced by coercion
+<p>I computed means for the random sample, the logical vector, the character vector, and the factor vector.</p>
+<pre class="r"><code>mean(q1_df$random_samp)</code></pre>
+<pre><code>## [1] 3.199192</code></pre>
+<pre class="r"><code>mean(q1_df$logical_vec)</code></pre>
+<pre><code>## [1] 0.7</code></pre>
+<pre class="r"><code>mean(q1_df$character_vec)</code></pre>
+<pre><code>## Warning in mean.default(q1_df$character_vec): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>mean(q1_df$factor_vec)</code></pre>
+<pre><code>## Warning in mean.default(q1_df$factor_vec): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>## The mean can not be computed for the character, and factoral variables because the values are not numeric/integers. The mean was calculated for the random_samp of uniform distribution and the logical_vec.</code></pre>
+<p>I attempted to convert the logical, character, and factor vectors to numeric vectors.</p>
+<pre class="r"><code>as.numeric(q1_df$logical_vec),
+as.numeric(q1_df$character_vec),
+as.numeric(q1_df$factor_vec)
 
-## Warning in eval_tidy(xs[[i]], unique_output): NAs introduced by coercion</code></pre>
-<p>Question 2:</p>
+## The as.numeric function converts character values to numeric values. In the logical vector, 0 is FALSE and 1 is TRUE. In the factor vector, 2 is Low, 3 is Medium, and 1 is High. Numeric values cannot be assigned to a character variable.</code></pre>
+<p>I converted character_vec to a factor vector (new_factorvec). Then converted new_factorvec to a numeric vector. I converted factor_vec to a character vector (new_charvec). Then converted new_charvec to a numeric vector.</p>
+<pre class="r"><code>new_factorvec = as.factor(q1_df$character_vec)
+as.numeric(new_factorvec)</code></pre>
+<pre><code>##  [1]  3  2  9  5  8 10  4  6  7  1</code></pre>
+<pre class="r"><code>## Since each character variable is unique it attempted to create 10 levels when converting to the factor (categorical) variables. Assigned random numbers to the 10 level factor (categorical) variable.
+
+new_charvec = as.character(q1_df$factor_vec)
+as.numeric(new_charvec)</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
+<pre class="r"><code># Converted the factor (categorical) variables to just character variables, as in, did not distinguish the levels. But could not convert from character to nueric because those numeric/integer values cannot be assigned to character variables.</code></pre>
+<p>Question 2: I created a data frame (q2_df) comprised of: x: a random sample of size 1000 from a standard Normal distribution y: a random sample of size 1000 from a standard Normal distribution A logical vector (sum_vec) indicating whether the x + y &gt; 0 A numeric vector (num_sumvec) created by coercing the above logical vector A factor vector (fac_sumvec) created by coercing the above logical vector</p>
 <pre class="r"><code>set.seed(168)
 q2_df = tibble(
   x = rnorm(1000),
   y = rnorm(1000),
-  sum_vec = x + y &gt; 0,
+  sum_vec = (x + y) &gt; 0,
   num_sumvec = as.numeric(sum_vec),
   fac_sumvec = as.factor(num_sumvec)
-
-## The size of the dataset is `r length(fac_sumvec)`. The mean of x is `r mean(x)` and the median of x is `r median(x)`. The proportion of cases for which the logic vector is &quot;TRUE&quot; is `r mean(sum_vec)`
-)
-
-logic_plot = ggplot(q2_df, aes(x = x, y = y, color = sum_vec)) + geom_point()
+)</code></pre>
+<p>The size of the dataset is 1000. The mean of x is 0.0016161 and the median of x is -0.0100357. The proportion of cases for which the logic vector is “TRUE” is 0.496</p>
+<p>I made a scatterplot of y vs. x using the logical, numeric, and factor variables from the previous part. Then I exported the plot of the logical variable to my project directory.</p>
+<pre class="r"><code>logic_plot = ggplot(q2_df, aes(x = x, y = y, color = sum_vec)) + geom_point()
 num_plot = ggplot(q2_df, aes(x = x, y = y, color = num_sumvec)) + geom_point()
 fac_plot = ggplot(q2_df, aes(x = x, y = y, color = fac_sumvec)) + geom_point()
 
