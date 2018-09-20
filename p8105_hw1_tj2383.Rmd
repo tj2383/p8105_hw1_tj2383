@@ -85,7 +85,7 @@ q2_df = tibble(
 )
 ```
 
-The size of the dataset is `r length(q2_df$fac_sumvec)`. The mean of x is `r mean(q2_df$x)` and the median of x is `r median(q2_df$x)`. The proportion of cases for which the logic vector is "TRUE" is `r mean(q2_df$sum_vec)`
+The size of the dataset is `r dim(q2_df)`. The mean of x is `r mean(q2_df$x)` and the median of x is `r median(q2_df$x)`. The proportion of cases for which the logic vector is "TRUE" is `r mean(q2_df$sum_vec)`
 
 
 
